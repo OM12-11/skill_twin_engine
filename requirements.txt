@@ -1,0 +1,6 @@
+flask
+spacy
+firebase-admin
+PyPDF2
+python-docx
+scikit-learn

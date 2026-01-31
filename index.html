@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-Twin Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Skill-Twin Engine</h1>
+            <p>Upload your resume and get a personalized learning roadmap.</p>
+        </header>
+
+        <div class="card upload-section">
+            <form id="analyzeForm">
+                <div class="form-group">
+                    <label for="resume">Upload Resume (.txt, .pdf, .docx)</label>
+                    <input type="file" id="resume" name="resume" accept=".txt,.pdf,.docx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Select Target Role</label>
+                    <select id="role" name="role" required>
+                        <option value="" disabled selected>Choose a role...</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="AI Engineer">AI Engineer</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="analyzeBtn">Analyze Resume</button>
+            </form>
+            <div id="loading" class="hidden">Analyzing... Please wait.</div>
+        </div>
+
+        <div id="results" class="hidden">
+            <div class="card result-card">
+                <h2>Analysis Result</h2>
+                
+                <div class="score-section">
+                    <h3>Match Score</h3>
+                    <div class="score-circle">
+                        <span id="matchPercent">0%</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <div class="skill-box">
+                        <h3>Missing Skills</h3>
+                        <ul id="missingSkillsList"></ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3>Skills You Have</h3>
+                        <ul id="resumeSkillsList"></ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-section">
+                    <h3>Learning Roadmap</h3>
+                    <div id="roadmapContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
